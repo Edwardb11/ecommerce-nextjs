@@ -1,6 +1,9 @@
+import Layout from "../../components/layout";
 
 export default function Index() {
   return (
-    <div>index</div>
+   <Layout>
+       Store
+   </Layout>
   )
 }

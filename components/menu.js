@@ -1,21 +1,25 @@
 import Link from "next/link";
+import style from "../styles/menu.module.css";
 
 export default function Menu() {
   return (
-    <nav>
+    <nav className={style.menu}>
       <div>
         <Link href="/">
-          <a>Home</a>
+          <a className={style.link}>Home</a>
         </Link>
         <Link href="/store">
-          <a>Store</a>
+          <a className={style.link}>Store</a>
         </Link>
         <Link href="/faq">
-          <a>FAQ</a>
+          <a className={style.link}>FAQ</a>
         </Link>
       </div>
       <div>
-        <a href="#"> Cart(0)</a>
+        <a className={style.link} href="#">
+          {" "}
+          Cart(0)
+        </a>
       </div>
     </nav>
   );
