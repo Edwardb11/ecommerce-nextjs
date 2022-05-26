@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Layout from "../../components/layout";
+import Product from "../../components/product";
 import { getItems } from "../../service/itemService";
 
 export default function Index({ items }) {
@@ -8,10 +9,7 @@ export default function Index({ items }) {
       <h1>Store</h1>
       {items &&
         items.map((item) => (
-          <div key={item.id}>
-            <Image src={item.image} width="200" height="200"></Image>
-            {item.title}
-          </div>
+          <Product item={item} showAs="Defaulf"/>
         ))}
     </Layout>
   );
