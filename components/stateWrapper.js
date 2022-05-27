@@ -36,6 +36,19 @@ export default function StateWrapper({ children }) {
     total = items.reduce((acc, item) => acc + item.qty, 0);
     return total;
   }
-  
-  return <div>{children}</div>;
+
+  return (
+    <AppContext.Provider
+      value={{
+        isOpen,
+        items,
+        openCart: handleOpenCart,
+        closeCart: handleCloseCart,
+        addItemToCart: handleAddItemToCart,
+        getNumberOfItems: handleNumberOfItems,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 }
