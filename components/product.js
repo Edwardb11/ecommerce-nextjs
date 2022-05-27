@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import style from "../styles/product.module.css";
 
 export default function Product({ item, showAs }) {
   if (showAs === "Page") {
@@ -10,7 +11,7 @@ export default function Product({ item, showAs }) {
   }
 
   return (
-    <div>
+    <div className={style.item}>
       <div>
         <Link href={`/store/url`}>
           <a>
@@ -32,7 +33,7 @@ export default function Product({ item, showAs }) {
         </h3>
       </div>
 
-      <div>${item.price}</div>
+      <div> ${item.price} </div>
       <div>
         <button>Add to cart</button>
       </div>
