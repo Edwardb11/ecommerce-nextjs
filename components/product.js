@@ -13,7 +13,7 @@ export default function Product({ item, showAs }) {
   return (
     <div className={style.item}>
       <div>
-        <Link href={`/store/url`}>
+        <Link href={`/store/${item.id}`}>
           <a>
             <Image
               src={item.image}
