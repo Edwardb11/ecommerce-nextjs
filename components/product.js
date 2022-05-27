@@ -7,7 +7,23 @@ export default function Product({ item, showAs }) {
   if (showAs === "Page") {
     return (
       <div>
-        <h2>{item.title}</h2>
+        <div>
+          <Image
+            src={item.image}
+            alt={item.description}
+            width={800}
+            height={800}
+          />
+        </div>
+
+        <div>
+          <h2>{item.title}</h2>
+        </div>
+
+        <div>{item.price}</div>
+        <div>{item.price}</div>
+        <button>Add to cart</button>
+        <div></div>
       </div>
     );
   }
