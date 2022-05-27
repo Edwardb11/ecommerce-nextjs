@@ -1,10 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { convertToPath } from "../lib/utils";
 import style from "../styles/product.module.css";
 
 export default function Product({ item, showAs }) {
   if (showAs === "Page") {
-    return <div>Page</div>;
+    return (
+      <div>
+        <h2>{item.title}</h2>
+      </div>
+    );
   }
   if (showAs === "ListItem") {
     return <div>List Item</div>;
@@ -13,7 +18,7 @@ export default function Product({ item, showAs }) {
   return (
     <div className={style.item}>
       <div>
-        <Link href={`/store/${item.id}`}>
+        <Link href={`/store/${convertToPath(item.title)}`}>
           <a>
             <Image
               src={item.image}
