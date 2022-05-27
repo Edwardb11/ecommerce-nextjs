@@ -6,8 +6,8 @@ import style from "../styles/product.module.css";
 export default function Product({ item, showAs }) {
   if (showAs === "Page") {
     return (
-      <div>
-        <div>
+      <div className={style.page}>
+        <div className={style.image}>
           <Image
             src={item.image}
             alt={item.description}
@@ -16,14 +16,16 @@ export default function Product({ item, showAs }) {
           />
         </div>
 
-        <div>
-          <h2>{item.title}</h2>
-        </div>
+        <div className={style.info}>
+          <div>
+            <h2>{item.title}</h2>
+          </div>
 
-        <div>{item.price}</div>
-        <div>{item.price}</div>
-        <button>Add to cart</button>
-        <div></div>
+          <div className={style.price}>{item.price}</div>
+          <div>{item.description}</div>
+          <button>Add to cart</button>
+          <div></div>
+        </div>
       </div>
     );
   }
