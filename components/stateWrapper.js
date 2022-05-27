@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AppContext = createContext({
   isOpen: false,
@@ -51,4 +51,8 @@ export default function StateWrapper({ children }) {
       {children}
     </AppContext.Provider>
   );
+}
+
+export function useAppContext() {
+return useContext(AppContext);
 }
