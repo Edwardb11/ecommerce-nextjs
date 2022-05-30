@@ -3,7 +3,7 @@ import Link from "next/link";
 import { convertToPath } from "../lib/utils";
 import style from "../styles/product.module.css";
 
-export default function Product({ item, showAs }) {
+export default function Product({ item, showAs,qty }) {
   if (showAs === "Page") {
     return (
       <div className={style.page}>
