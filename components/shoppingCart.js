@@ -12,19 +12,25 @@ export default function ShoppingCart() {
       style={{ display: cart.isOpen ? "block" : "none" }}
     >
       <button onClick={handleCloseCart}>Close</button>
-      <div>Cart is empty</div>
 
-      <h3>Your items</h3>
-      <div>
-        {cart.items.map((item) => (
-          <Product
-            key={item.id}
-            item={item}
-            showAs={"ListItem"}
-            qty={item.qty}
-          />
-        ))}
-      </div>
+      {cart.items.length === 0 ? (
+        <div>Cart is empty</div>
+      ) : (
+        <>
+          {" "}
+          <h3>Your items</h3>
+          <div>
+            {cart.items.map((item) => (
+              <Product
+                key={item.id}
+                item={item}
+                showAs={"ListItem"}
+                qty={item.qty}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
