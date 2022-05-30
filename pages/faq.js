@@ -1,9 +1,10 @@
 import Layout from "../components/layout";
+import style from "../styles/faq.module.css";
 
 export default function FAQ() {
   return (
     <Layout>
-      <div >
+      <div className={style.faq}>
         <h2>FAQ</h2>
 
         <div>
