@@ -32,10 +32,13 @@ export default function StateWrapper({ children }) {
     setItems([...temp]);
   }
 
-  function handleNumberOfItems() {
-    total = items.reduce((acc, item) => acc + item.qty, 0);
+  function getNumberOfItems() {
+    const total = items.reduce((acc, item) => {
+      return (acc += item.qty);
+    }, 0);
     return total;
   }
+
 
   return (
     <AppContext.Provider
@@ -45,7 +48,7 @@ export default function StateWrapper({ children }) {
         openCart: handleOpenCart,
         closeCart: handleCloseCart,
         addItemToCart: handleAddItemToCart,
-        getNumberOfItems: handleNumberOfItems,
+        getNumberOfItems: getNumberOfItems,
       }}
     >
       {children}

@@ -1,11 +1,17 @@
 import { useAppContext } from "./stateWrapper";
 import { Product } from "./product";
-import style  from "../styles/shoppingCart.module.css";
+import style from "../styles/shoppingCart.module.css";
 export default function ShoppingCart() {
   const cart = useAppContext();
+  function handleCloseCart() {
+    cart.closeCart();
+  }
   return (
-    <div className={style.shoppingCart}>
-      <button>Close</button>
+    <div
+      className={style.shoppingCart}
+      style={{ display: cart.isOpen ? "block" : "none" }}
+    >
+      <button onClick={handleCloseCart}>Close</button>
       <div>Cart is empty</div>
 
       <h3>Your items</h3>

@@ -1,7 +1,12 @@
 import Link from "next/link";
 import style from "../styles/menu.module.css";
+import { useAppContext } from "./stateWrapper";
 
 export default function Menu() {
+  const cart = useAppContext();
+  function handleOpenCart() {
+    cart.openCart();
+  }
   return (
     <nav className={style.menu}>
       <div>
@@ -16,9 +21,9 @@ export default function Menu() {
         </Link>
       </div>
       <div>
-        <a className={style.link} href="#">
+        <a className={style.link} href="#" onClick={handleOpenCart}>
           {" "}
-          Cart(0)
+          Cart({cart.getNumberOfItems()})
         </a>
       </div>
     </nav>
