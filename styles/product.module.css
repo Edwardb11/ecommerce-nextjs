@@ -20,6 +20,14 @@
     margin: 5px 0;
 }
 
+.listItem {
+    display: flex;
+    gap: 10px;
+    border-bottom: solid 1px #ccc;
+    padding: 10px 0;
+  }
+
+  
 .page {
     background-color: white;
     padding: 40px;
@@ -29,7 +37,15 @@
     transform: scale(0);
     animation: scale 3s ease forwards;
 }
+@keyframes scale {
+    from {
+        transform: scale(0);
+    }
 
+    to {
+        transform: scale(1);
+    }
+}
 .info {
     display: flex;
     flex-direction: column;
@@ -47,12 +63,4 @@
     min-width: 600px;
 }
 
-@keyframes scale {
-    from {
-        transform: scale(0);
-    }
 
-    to {
-        transform: scale(1);
-    }
-}

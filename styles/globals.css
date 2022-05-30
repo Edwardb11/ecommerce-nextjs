@@ -20,3 +20,14 @@ h2{
   font-size: 62px;
   margin: 22px 0 0 0;
 }
+
+.btn-cart {
+  border: none;
+  padding: 15px 25px;
+  border-radius: 5px;
+  background-color: greenyellow;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+}

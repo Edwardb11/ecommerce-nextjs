@@ -4,7 +4,8 @@ import { useAppContext } from "./stateWrapper";
 
 export default function Menu() {
   const cart = useAppContext();
-  function handleOpenCart() {
+  function handleClickCart(e) {
+    e.preventDefault();
     cart.openCart();
   }
   return (
@@ -21,11 +22,10 @@ export default function Menu() {
         </Link>
       </div>
       <div>
-        <a className={style.link} href="#" onClick={handleOpenCart}>
-          {" "}
-          Cart({cart.getNumberOfItems()})
-        </a>
       </div>
+      <a href="#" className={style.link} onClick={handleClickCart}>
+        Cart ({cart.getNumberOfItems()})
+      </a>
     </nav>
   );
 }

@@ -1,13 +1,13 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const AppContext = createContext({
-  isOpen: false,
+  isOpen: true,
   items: [],
   openCart: () => {},
-  closeCart: () => {},
-  addItemToCart: () => {},
+  addItemToCart: (item) => {},
   getNumberOfItems: () => {},
 });
+
 export default function StateWrapper({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [items, setItems] = useState([]);
@@ -15,21 +15,22 @@ export default function StateWrapper({ children }) {
   function handleOpenCart() {
     setIsOpen(true);
   }
+
   function handleCloseCart() {
     setIsOpen(false);
   }
 
   function handleAddItemToCart(item) {
     const temp = [...items];
-    const found = temp.find((product) => product.id === item.id);
-
+    const found = temp.find((i) => i.id === item.id);
     if (found) {
       found.qty++;
     } else {
       item.qty = 1;
+      temp.push(item);
     }
-
     setItems([...temp]);
+    console.log({ items });
   }
 
   function getNumberOfItems() {
@@ -39,12 +40,11 @@ export default function StateWrapper({ children }) {
     return total;
   }
 
-
   return (
     <AppContext.Provider
       value={{
-        isOpen,
         items,
+        isOpen,
         openCart: handleOpenCart,
         closeCart: handleCloseCart,
         addItemToCart: handleAddItemToCart,
@@ -57,5 +57,5 @@ export default function StateWrapper({ children }) {
 }
 
 export function useAppContext() {
-return useContext(AppContext);
+  return useContext(AppContext);
 }

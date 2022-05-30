@@ -1,36 +1,55 @@
-import Image from "next/image";
 import Link from "next/link";
 import { convertToPath } from "../lib/utils";
 import style from "../styles/product.module.css";
+import Image from "next/image";
+import ButtonCart from "./buttonCart";
 
-export default function Product({ item, showAs,qty }) {
+export default function Product({ item, qty = 0, showAs }) {
   if (showAs === "Page") {
     return (
       <div className={style.page}>
         <div className={style.image}>
           <Image
             src={item.image}
-            alt={item.description}
+            alt="Picture of the author"
             width={800}
             height={800}
           />
         </div>
-
         <div className={style.info}>
           <div>
             <h2>{item.title}</h2>
           </div>
-
-          <div className={style.price}>{item.price}</div>
+          <div className={style.price}>${item.price}</div>
           <div>{item.description}</div>
-          <button>Add to cart</button>
-          <div></div>
+          <div>
+            <ButtonCart item={item} />
+          </div>
         </div>
       </div>
     );
   }
+
   if (showAs === "ListItem") {
-    return <div>List Item</div>;
+    return (
+      <div className={style.listItem}>
+        <div>
+          <Image
+            src={item.image}
+            alt="Picture of the author"
+            width={100}
+            height={100}
+          />
+        </div>
+        <div>
+          <div>{item.title}</div>
+          <div>${item.price}</div>
+          {qty === 0 ? "" : <div>{qty} units</div>}
+
+          {qty === 0 ? "" : <div>Subtotal: ${qty * item.price}</div>}
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -40,25 +59,23 @@ export default function Product({ item, showAs,qty }) {
           <a>
             <Image
               src={item.image}
-              alt={item.description}
-              width="500"
-              height="500"
+              alt="Picture of the author"
+              width={500}
+              height={500}
             />
           </a>
         </Link>
       </div>
-
       <div>
         <h3>
-          <Link href={`/store/url`}>
+          <Link href={`/store/${convertToPath(item.title)}`}>
             <a>{item.title}</a>
           </Link>
         </h3>
       </div>
-
-      <div> ${item.price} </div>
+      <div>${item.price}</div>
       <div>
-        <button>Add to cart</button>
+        <ButtonCart item={item} />
       </div>
     </div>
   );
