@@ -1,5 +1,3 @@
-
-   
 import { useAppContext } from "./stateWrapper";
 
 export default function ButtonCart({ item }) {
@@ -7,6 +5,7 @@ export default function ButtonCart({ item }) {
 
   function handleClick() {
     cart.addItemToCart(item);
+    cart.openCart()
   }
   return (
     <button className="btn-cart" onClick={handleClick}>
