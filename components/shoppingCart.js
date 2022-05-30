@@ -11,10 +11,12 @@ export default function ShoppingCart() {
       className={style.shoppingCart}
       style={{ display: cart.isOpen ? "block" : "none" }}
     >
-      <button onClick={handleCloseCart}>Close</button>
+      <button className={style.close} onClick={handleCloseCart}>
+        Close
+      </button>
 
       {cart.items.length === 0 ? (
-        <div>Cart is empty</div>
+        <div className={style.empty}>Cart is empty</div>
       ) : (
         <>
           {" "}
